@@ -1,0 +1,24 @@
+<div class="main-container">
+
+    <div class="search-bar-container">
+        <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="password" placeholder="Filter">
+              <span class="icon is-small is-left">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+            </p>
+          </div>
+    </div>
+
+    
+    <!-- NoteList card -->
+    <div class="note-list">
+        <app-notecard *ngFor="let note of notes" [title]="note.title" [body]="note.body"></app-notecard>
+    </div>
+
+    <!--New Note  -->
+    <div class="note-create">
+        <app-nodedetails></app-nodedetails>
+    </div>
+</div>

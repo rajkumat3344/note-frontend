@@ -1,0 +1,51 @@
+.foot-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button{
+        width: 200px;
+    }
+}
+
+.small{
+    width: 100%;
+}
+
+
+.added{
+    position: absolute;
+    top: 5rem;
+    left: 58rem;
+    right: 0;
+    z-index: 1111;
+    width: 30%;
+    
+}
+
+button{
+    transition: transform 0.3s ease-in-out;
+    &:hover{
+        transform: scale(0.9);
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .foot-container{
+        display: flex;
+       justify-content: center;
+       align-items: center;
+
+       button{
+        width: 100px;
+    }
+    }
+
+    button{
+      transition: none;
+
+      &:hover{
+        transform: none;
+      }
+    }
+}
