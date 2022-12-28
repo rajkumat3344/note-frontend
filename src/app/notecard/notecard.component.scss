@@ -7,16 +7,11 @@
     border-radius: 5px;
 
     box-shadow: 0px 2px 15px 2px rgba(black, 0.068);
+    transition: box-shadow 0.3s ease-in-out;
 
-    transition: box-shadow 0.2s ease-in-out;
-    transition: transform 0.3s ease-out;
-
-    &:hover {
-        cursor: pointer;
-        box-shadow: 0px 0px 0px 4px rgba(black, 0.068);
-        transform: scale(1.1);
-
-
+    &:hover{
+        box-shadow: 0px 2px 15px 2px rgba(black, 0.15);
+    }
 
 
         svg {
@@ -42,22 +37,8 @@
 
             color: #766a6a;
             margin-left: 3px;
-
-            .fade-out-truncation {
-                position: absolute;
-
-                pointer-events: none;
-
-                bottom: 0;
-
-                height: 50%;
-                width: 100%;
-
-                background: linear-gradient(to bottom, rgba($light, 0) 0%, rgba($light, 0.8) 50%, $light 100%);
-            }
         }
     }
-}
 
 .line-clamp {
     height: 2.4rem;
@@ -75,6 +56,7 @@
         // max-width: 71px;
         text-align: center;
         margin-top: 15px;
+        cursor: pointer;
 }
 
 

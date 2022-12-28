@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NoteService } from 'src/app/shared/note.service';
@@ -17,25 +17,29 @@ export class NodedetailsComponent implements OnInit{
    
 
 
-  constructor(private noteService: NoteService, private router: Router, private tService: ToastrService) { }
+  constructor(private noteService: NoteService, private router: Router, private tService: ToastrService, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void{
-     this.note = new NoteModule();
+   this.note = new NoteModule();
+   this.cdRef.detectChanges(); 
   }
 
   public showSuccess(): void {
     this.tService.success('Successfully Added!', 'Note');
+    
   }
 
  onSubmit(form: NgForm){
     this.noteService.add(form.value);
       this.router.navigateByUrl('/');
-       this.isModalActive = false;
+      this.isModalActive = false;
        form.reset();
+       console.log(form.value);
   }
   
-  toggleModal() {
+  toggleModal(){
     this.isModalActive = !this.isModalActive;
+    
   }
 
   

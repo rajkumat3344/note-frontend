@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoteListComponent } from './pages/note-list/note-list.component';
@@ -11,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { EllipsisModule } from 'ngx-ellipsis';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { EllipsisModule } from 'ngx-ellipsis';
     NoteListComponent,
     MainLayoutComponent,
     NotecardComponent,
-    NodedetailsComponent
+    NodedetailsComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { EllipsisDirective } from 'ngx-ellipsis';
+
 
 @Component({
   selector: 'app-notecard',
@@ -9,7 +10,9 @@ import { EllipsisDirective } from 'ngx-ellipsis';
 export class NotecardComponent implements OnInit{
   @Input() title!: string;
   @Input() body!: string;
+  @Input() link!: string;
 
+  @Output('delete') deleteEvent : EventEmitter<void> = new EventEmitter<void>();
   @ViewChild(EllipsisDirective) ellipsisRef!: EllipsisDirective;
 
   showMore = false;
@@ -36,5 +39,9 @@ export class NotecardComponent implements OnInit{
     }
 
     this.hideLessButton = this.showMore;
+  }
+
+  removeCard(){
+    this.deleteEvent.emit();
   }
 }

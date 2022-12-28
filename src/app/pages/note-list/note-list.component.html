@@ -3,15 +3,20 @@
     <div class="search-bar-container">
         <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="search" placeholder="Filter">
+              <input class="input" type="search" placeholder="Filter" [(ngModel)]="searchText">
             </p>
           </div>
     </div>
 
     
     <!-- NoteList card -->
-    <div class="note-list">
-        <app-notecard *ngFor="let note of notes" [title]="note.title" [body]="note.body"></app-notecard>
+    <div class="note-list" [@listAnim]>
+        <app-notecard  
+        *ngFor="let note of notes | search: searchText; index as i"
+        [@itemAnim]
+        [title]="note.title" 
+        [body]="note.body"
+        (delete)="deletNote(note)"></app-notecard>
     </div>
 
     <!--New Note  -->
