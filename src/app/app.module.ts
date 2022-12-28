@@ -10,6 +10,7 @@ import { NodedetailsComponent } from './pages/nodedetails/nodedetails.component'
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { EllipsisModule } from 'ngx-ellipsis';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    EllipsisModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

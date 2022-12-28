@@ -1,5 +1,5 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
-
+import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { EllipsisDirective } from 'ngx-ellipsis';
 
 @Component({
   selector: 'app-notecard',
@@ -10,23 +10,31 @@ export class NotecardComponent implements OnInit{
   @Input() title!: string;
   @Input() body!: string;
 
-  @ViewChild('truncator', {static: true})
-  truncator!: ElementRef<HTMLElement>;
+  @ViewChild(EllipsisDirective) ellipsisRef!: EllipsisDirective;
 
-  @ViewChild('bodyText', { static: true })
-  bodyText!: ElementRef<HTMLElement>;
+  showMore = false;
+
+  showMoreButton = false;
+
+  hideLessButton = true;
   
-  constructor(private renderer: Renderer2){}
+  constructor(private cd: ChangeDetectorRef){}
 
-  ngOnInit(){
-    let style = window.getComputedStyle(this.bodyText.nativeElement, null);
-    let viewableHeight = parseInt(style.getPropertyValue("height"), 10);
-
-    if(this.bodyText.nativeElement.scrollHeight > viewableHeight){
-      this.renderer.setStyle(this.truncator.nativeElement, 'display', 'block');
-    }else{
-      this.renderer.setStyle(this.truncator.nativeElement, 'display', 'none');
-    }
+  ngOnInit(): void{
+    this.hideLessButton = false;
   }
 
+  truncated(index: number) {
+    this.showMoreButton = index === null;
+  }
+
+  showComplete() {
+    if (this.ellipsisRef) {
+      this.showMore = !this.showMore;
+      this.cd.detectChanges();
+      this.ellipsisRef.applyEllipsis();
+    }
+
+    this.hideLessButton = this.showMore;
+  }
 }

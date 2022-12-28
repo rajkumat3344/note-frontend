@@ -9,6 +9,9 @@
    padding-top: 50px;
 }
 
+
+
+
 .note-list{
     margin-top: 35px;
    display: flex;
@@ -27,29 +30,22 @@ app-notecard{
     width: 500px;
     border-radius: 0;
 }
-
-.search-bar-container{
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-}
-
 @media  screen and (max-width: 850px) {
     .search-bar-container{
-        max-width: 300px;
+        
         display: flex;
         flex-direction: column;
-        margin-left: 100px;
+        margin: auto;
     }
     .note-list{
         margin-top: 35px;
         display: flex;
         flex-direction: column;
-
     }
 
     app-notecard{
         display: block;
         margin-bottom: 20px;
+        
     }
 }

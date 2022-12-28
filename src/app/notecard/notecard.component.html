@@ -5,8 +5,14 @@
         <h1 class="note-card-title">{{title}}</h1>
 
         <div #bodyText class="note-card-body">
-            <p>{{body}}</p>
-            <div #truncator class="fade-out-truncation"></div>
+            <p #ellipsisRef ellipsis (ellipsis-change)="truncated($event)" [ngClass]="{ 'line-clamp': !showMore }">
+                {{body}}</p>
+            <span class="more" *ngIf="!showMoreButton" (click)="showComplete()">
+                <p>Show more</p>
+            </span>
+            <span class="more" *ngIf="hideLessButton" (click)="showComplete()">
+                <p>Show less</p>                
+            </span>
         </div>
     </div>
 

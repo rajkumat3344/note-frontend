@@ -1,42 +1,47 @@
 
 <div class="foot-container">
-    <button class="button is-info" data-toggle="modal" (click)="toggleModal()">Create</button>
+    <button class="button is-rounded is-success" data-toggle="modal" (click)="toggleModal()" data-backdrop="static" data-keyboard="false">
+        <span class="icon">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+    </button>
 </div>
-<div class="modal small" [ngClass]="{ 'is-active' : isModalActive }">
-    <div class="modal-background" (click)="toggleModal()"></div>
+
+    <div class="modal " [ngClass]="{ 'is-active' : isModalActive }">
+        <div class="modal-background" (click)="toggleModal()"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title big">New Note</p>
+        <p class="modal-card-title big">Create Note</p>
         <button class="delete" aria-label="close" (click)="toggleModal()"></button>
-      </header>
-      <section class="modal-card-body">
+    </header>
+    <section class="modal-card-body">
         <!-- Content ... -->
         <div class="forms-container">
-              
+            
             <form #noteForm="ngForm" (ngSubmit)="onSubmit(noteForm)">
                 <div class="field">
                     <label class="label">Title</label>
                     <div class="control">
-                        <input type="text" name="title" [ngModel]="note.title" class="input">
+                        <input type="text" name="title" [ngModel]="note.title" class="input" placeholder="title">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Body</label>
                     <div class="control">
-                        <textarea class="textarea has-fixed-size" name="body" [ngModel]="note.body"></textarea>
+                        <textarea class="textarea has-fixed-size" name="body" [ngModel]="note.body" placeholder="body"></textarea>
                     </div>
                 </div>
             </form>
         </div>
       </section>
-          <footer class="modal-card-foot">
-            <div class="field is-grouped is-pulled-right">
+      <footer class="modal-card-foot">
+          <div class="field is-grouped is-pulled-right">
                 <div class="control">
-                    <button class="button is-info" (click)="onSubmit(noteForm)" (click)="showSuccess()">Create</button>
+                    <button class="button is-success" (click)="onSubmit(noteForm)" (click)="showSuccess()">Create</button>
                 </div>
                 <div class="control">
                     <button class="button" (click)="toggleModal()" >Cancel</button>
                 </div>
-              </div>
+            </div>
             </footer>
-    </div>
+        </div>

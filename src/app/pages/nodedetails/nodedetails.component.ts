@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NoteService } from 'src/app/shared/note.service';
 import { NoteModule } from 'src/app/shared/note/note.module';
@@ -13,8 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 export class NodedetailsComponent implements OnInit{
   note!: NoteModule;
   isModalActive: boolean = false;
-
   
+   
 
 
   constructor(private noteService: NoteService, private router: Router, private tService: ToastrService) { }
@@ -27,14 +27,16 @@ export class NodedetailsComponent implements OnInit{
     this.tService.success('Successfully Added!', 'Note');
   }
 
-  onSubmit(form: NgForm){
+ onSubmit(form: NgForm){
     this.noteService.add(form.value);
-    this.router.navigateByUrl('/');
-    this.isModalActive = false;
-   
+      this.router.navigateByUrl('/');
+       this.isModalActive = false;
+       form.reset();
   }
-
+  
   toggleModal() {
     this.isModalActive = !this.isModalActive;
   }
+
+  
 }
